@@ -4,7 +4,7 @@
     "description": "Create a REST service (JSON/HTTP) for storing information about these Gateways and their associated devices.",
     "main": "server.ts",
     "scripts": {
-        "start": "npm run build && node build/server.js",
+        "start": "npm run build && ts-node -r ts-node/register/transpile-only -r tsconfig-paths/register build/server.js",
         "start:dev": "nodemon",
         "build": "rimraf ./build && tsc"
     },
@@ -15,10 +15,19 @@
     "author": "@carlitorweb <https://github.com/carlitorweb>",
     "license": "UNLICENSED",
     "devDependencies": {
+        "@types/express": "^4.17.14",
+        "@types/morgan": "^1.9.3",
         "@types/node": "^18.11.9",
+        "morgan": "^1.10.0",
         "nodemon": "^2.0.20",
+        "prisma": "^4.5.0",
         "rimraf": "^3.0.2",
         "ts-node": "^10.9.1",
+        "tsconfig-paths": "^4.1.0",
         "typescript": "^4.8.4"
+    },
+    "dependencies": {
+        "@prisma/client": "^4.5.0",
+        "express": "^4.18.2"
     }
 }
