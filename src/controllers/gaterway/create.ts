@@ -16,13 +16,13 @@ const createGaterway = (req: NewPostData, res: Response, next: NextFunction): vo
         .save()
         .then(result => {
             res.status(201).json({
-                message: 'Gaterway stored successfully in the DB',
-                gaterID: result.id,
+                message: `Gaterway ${req.body.name} stored successfully in the DB`,
             });
         })
         .catch(error => {
-            // Oops!, something happen, let pass the word to the center error handler, he will know what happened
-            next(error);
+            res.status(error._httpCode).json({
+                message: error.message,
+            });
         });
 };
 

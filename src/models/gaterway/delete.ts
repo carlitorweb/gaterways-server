@@ -4,7 +4,6 @@ import { Gaterway } from '@prisma/client';
 
 // Local dependencies
 import prisma from '@prismaClient';
-
 import { HTTP500 } from '@lib/errors/httpErrors';
 import BaseGater from './baseGater';
 
