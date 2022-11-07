@@ -3,7 +3,6 @@ import { NextFunction, Request, Response } from 'express';
 
 // Local dependencies
 import GaterwaysInformation from '@models/gaterway/getAll';
-import { count } from 'console';
 
 const getAllGaterways = (req: Request, res: Response, next: NextFunction): void => {
     const gaterway = new GaterwaysInformation();
