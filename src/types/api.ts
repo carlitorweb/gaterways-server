@@ -5,6 +5,10 @@ export type NewGaterwayRequestData = {
     //devices?: string[];
 };
 
+export type UniqueGaterway = {
+    id: string;
+};
+
 export enum HttpStatusCode {
     OK = 200,
     CREATED = 201,
