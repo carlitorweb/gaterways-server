@@ -1,10 +1,10 @@
 // Global dependencies
 import { UniqueGaterway } from 'api';
-import { Gaterway } from '@prisma/client';
+import { Gaterway, Prisma } from '@prisma/client';
 
 // Local dependencies
 import prisma from '@prismaClient';
-import { HTTP500 } from '@lib/errors/httpErrors';
+import { HTTP404, HTTP500 } from '@lib/errors/httpErrors';
 import BaseGater from './baseGater';
 
 /**
@@ -26,16 +26,20 @@ export default class DeletePost extends BaseGater<UniqueGaterway> {
      * @throws HTTP500 if anything go wrong within prisma.gaterway.delete(). Maybe a ghost _gaterway.id?
      *
      */
-    async delete(): Promise<Gaterway> {
+    async delete(): Promise<void> {
         try {
-            const deletePost = await prisma.gaterway.delete({
+            await prisma.gaterway.delete({
                 where: BaseGater.findSpecificGaterway(this._gaterway.id),
             });
-
-            return deletePost;
         } catch (e) {
-            // I think I could not find that gaterway...or I made it and something really bad happen!?
-            throw new HTTP500(e);
+            if (e instanceof Prisma.PrismaClientKnownRequestError) {
+                if (e.code === 'P2025') {
+                    e.message = `The record searched in the where condition ({gaterway}.{id} = {${this._gaterway.id}}) does not exist`;
+                    throw new HTTP404(e, e.message);
+                }
+            } else {
+                throw new HTTP500(e);
+            }
         }
     }
 }

@@ -14,7 +14,7 @@ const createGaterway = (req: NewPostData, res: Response, next: NextFunction): vo
 
     gaterway
         .save()
-        .then(result => {
+        .then(() => {
             res.status(201).json({
                 message: `Gaterway ${req.body.name} stored successfully in the DB`,
             });

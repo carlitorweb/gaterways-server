@@ -22,16 +22,16 @@ const deleteGaterway = async (
 
     return await gater
         .delete()
-        .then(gater => {
+        .then(() => {
             // The End - gaterway deleted. Response with the gaterway data in case someone need to see it one last time
             res.status(200).json({
-                message: 'Gaterway deleted! phew!!',
-                gaterway: gater,
+                message: `Gaterway with ID:${req.params.id} deleted. Phew!!`,
             });
         })
         .catch(error => {
-            // Oops!, something happen, let pass the word to the center error handler, he will know what happened
-            next(error);
+            res.status(error._httpCode).json({
+                message: error.message,
+            });
         });
 };
 

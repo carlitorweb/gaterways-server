@@ -6,7 +6,6 @@ import { NewGaterwayRequestData } from 'api';
 import prisma from '@prismaClient';
 import BaseGater from './baseGater';
 import { HTTP404, HTTP500 } from '@lib/errors/httpErrors';
-import BaseError from '@lib/errors/baseError';
 
 /**
  * @classdesc Model class for edit the data of a gaterway
