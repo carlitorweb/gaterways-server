@@ -21,6 +21,7 @@ const createGaterway = (req: NewPostData, res: Response, next: NextFunction): vo
             });
         })
         .catch(error => {
+            // Oops!, something happen, let pass the word to the center error handler, he will know what happened
             next(error);
         });
 };

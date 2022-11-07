@@ -15,14 +15,15 @@ const getUniqueGaterway = (req: GaterwayDataId, res: Response, next: NextFunctio
     const gaterway = new GaterwayInformation(req.body);
 
     gaterway
-        .save()
+        .get()
         .then(result => {
-            res.status(201).json({
+            res.status(200).json({
                 message: 'Unique Gaterway information successfully obtained',
                 gaterway: result,
             });
         })
         .catch(error => {
+            // Oops!, something happen, let pass the word to the center error handler, he will know what happened
             next(error);
         });
 };

@@ -7,6 +7,11 @@ import prisma from '@prismaClient';
 import { HTTP500 } from '@lib/errors/httpErrors';
 import BaseGater from './baseGater';
 
+/**
+ * @classdesc Model class for get the unique information about one of our Gaterways
+ *
+ * @constructor
+ */
 export default class GaterwayInformation extends BaseGater<UniqueGaterway> {
     constructor(gaterId: UniqueGaterway) {
         super(gaterId);
@@ -15,7 +20,7 @@ export default class GaterwayInformation extends BaseGater<UniqueGaterway> {
     /**
      * @returns — A promise to be either resolved with the new Prisma.GaterwayInformation data or rejected with an Error
      */
-    async save(): Promise<Gaterway | null> {
+    async get(): Promise<Gaterway | null> {
         try {
             // Get a unique gaterway information from the DB
             const gaterInfo = await prisma.gaterway.findUnique({
