@@ -1,5 +1,5 @@
 // GLobal dependencies
-import { Gaterway, Prisma } from '@prisma/client';
+import { Prisma } from '@prisma/client';
 import { NewGaterwayRequestData } from 'api';
 
 // Local dependencies

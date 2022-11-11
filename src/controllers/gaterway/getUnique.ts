@@ -19,7 +19,7 @@ const getUniqueGaterway = (req: GaterwayDataId, res: Response, next: NextFunctio
         .then(result => {
             res.status(200).json({
                 message: 'Unique Gaterway information successfully obtained',
-                gaterway: result,
+                data: result,
             });
         })
         .catch(error => {

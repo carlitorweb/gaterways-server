@@ -13,7 +13,7 @@ const getAllGaterways = (req: Request, res: Response, next: NextFunction): void 
             res.status(200).json({
                 message: 'Gateways information successfully obtained',
                 totalOfGaterways: result.length,
-                gaterways: result,
+                data: result,
             });
         })
         .catch(error => {

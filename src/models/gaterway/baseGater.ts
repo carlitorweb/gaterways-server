@@ -18,11 +18,11 @@ export default class BaseGater<T> {
             id,
         });
     };
-    protected static updateGaterwayData = (
+    /*protected static updateGaterwayData = (
         data: NewGaterwayRequestData
     ): NewGaterwayRequestData => {
         return Prisma.validator<Prisma.GaterwayUncheckedUpdateInput>()({
             ...data,
         });
-    };
+    };*/
 }

@@ -5,11 +5,11 @@ import { NewGaterwayRequestData } from 'api';
 // Local dependencies
 import GaterwayCreate from '@models/gaterway/create';
 
-interface NewPostData extends Request {
+interface NewGaterwayData extends Request {
     body: NewGaterwayRequestData;
 }
 
-const createGaterway = (req: NewPostData, res: Response, next: NextFunction): void => {
+const createGaterway = (req: NewGaterwayData, res: Response, next: NextFunction): void => {
     const gaterway = new GaterwayCreate(req.body);
 
     gaterway

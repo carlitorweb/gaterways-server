@@ -3,7 +3,7 @@ import express from 'express';
 import morgan from 'morgan';
 
 // Import routes
-import { routeGaterwayApp } from '@routes/index';
+import { routeGaterwayApp, routeDeviceApp } from '@routes/index';
 
 // Instance express object
 const app = express();
@@ -29,6 +29,7 @@ app.use(morgan('tiny'));
 
 // Define routes
 routeGaterwayApp(app);
+routeDeviceApp(app);
 
 // Start the server
 app.listen(PORT, HOST, () => {

@@ -17,7 +17,11 @@ export default class GaterwaysInformation {
     async get(): Promise<Gaterway[]> {
         try {
             // Get all gaterways information from the DB
-            const gatersInfo = await prisma.gaterway.findMany();
+            const gatersInfo = await prisma.gaterway.findMany({
+                include: {
+                    devices: true,
+                },
+            });
 
             return gatersInfo;
         } catch (e) {

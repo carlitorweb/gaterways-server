@@ -32,7 +32,8 @@ export default class GaterwayUpdate extends BaseGater<NewGaterwayRequestData> {
             // Not a big deal with prisma, just search and update
             await prisma.gaterway.update({
                 where: BaseGater.findSpecificGaterway(gaterId),
-                data: BaseGater.updateGaterwayData(this._gaterway),
+                data: this._gaterway,
+                // data: BaseGater.updateGaterwayData(this._gaterway),
             });
         } catch (e) {
             if (e instanceof Prisma.PrismaClientKnownRequestError) {
