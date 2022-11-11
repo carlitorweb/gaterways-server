@@ -2,10 +2,21 @@ export type NewGaterwayRequestData = {
     sn: string;
     name: string;
     ipv4: string;
-    //devices?: string[];
+    devices?: string[];
+};
+
+export type NewDeviceRequestData = {
+    id?: string;
+    vendor: string;
+    status: boolean;
+    gaterwayId?: string;
 };
 
 export type UniqueGaterway = {
+    id: string;
+};
+
+export type UniqueDevice = {
     id: string;
 };
 

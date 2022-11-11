@@ -11,9 +11,18 @@ datasource db {
 }
 
 model Gaterway {
-  id   String @id @default(auto()) @map("_id") @db.ObjectId
-  sn   String @unique
-  name String
-  ipv4 String
-  //  devices     Device[]
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  sn      String   @unique
+  name    String
+  ipv4    String
+  devices Device[]
+}
+
+model Device {
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  Gaterway   Gaterway? @relation(fields: [gaterwayId], references: [id])
+  gaterwayId String?   @db.ObjectId
+  vendor     String
+  createdAt  DateTime  @default(now())
+  status     Boolean
 }

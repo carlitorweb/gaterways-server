@@ -10,7 +10,8 @@
     },
     "keywords": [
         "Nodejs",
-        "Express"
+        "Express",
+        "Typescript"
     ],
     "author": "@carlitorweb <https://github.com/carlitorweb>",
     "license": "UNLICENSED",
