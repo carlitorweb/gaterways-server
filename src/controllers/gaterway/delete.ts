@@ -25,7 +25,7 @@ const deleteGaterway = async (
         .then(() => {
             // The End - gaterway deleted. Response with the gaterway data in case someone need to see it one last time
             res.status(200).json({
-                message: `Gaterway with ID:${req.params.id} deleted. Phew!!`,
+                message: `Gaterway with ID:${req.params.id} deleted and his devices disconeccted (if any was there). Phew!!`,
             });
         })
         .catch(error => {

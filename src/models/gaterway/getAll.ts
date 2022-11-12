@@ -1,5 +1,5 @@
 // GLobal dependencies
-import { Gaterway } from '@prisma/client';
+import { Device, Gaterway } from '@prisma/client';
 
 // Local dependencies
 import prisma from '@prismaClient';
@@ -14,7 +14,7 @@ export default class GaterwaysInformation {
     /**
      * @returns — A promise to be either resolved with the new Prisma.GaterwaysInformation data or rejected with an Error
      */
-    async get(): Promise<Gaterway[]> {
+    async get() {
         try {
             // Get all gaterways information from the DB
             const gatersInfo = await prisma.gaterway.findMany({

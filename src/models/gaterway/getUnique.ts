@@ -35,6 +35,9 @@ export default class GaterwayInformation extends BaseGater<UniqueGaterway> {
             // Get a unique gaterway information from the DB
             const gaterInfo = await prisma.gaterway.findUniqueOrThrow({
                 where: BaseGater.findSpecificGaterway(this._gaterway.id),
+                include: {
+                    devices: true,
+                },
             });
 
             return gaterInfo;

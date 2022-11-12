@@ -28,6 +28,22 @@ export default class DeletePost extends BaseGater<UniqueGaterway> {
      */
     async delete(): Promise<void> {
         try {
+            // We need disconnect all the devices from the gaterway before delete it
+            await prisma.gaterway.update({
+                where: {
+                    id: this._gaterway.id,
+                },
+                data: {
+                    devices: {
+                        set: [],
+                    },
+                },
+                include: {
+                    devices: true,
+                },
+            });
+
+            // Devices released, let delete the gaterway
             await prisma.gaterway.delete({
                 where: BaseGater.findSpecificGaterway(this._gaterway.id),
             });
