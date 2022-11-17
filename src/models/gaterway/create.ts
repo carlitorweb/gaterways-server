@@ -27,11 +27,14 @@ export default class GaterwayCreate extends BaseGater<NewGaterwayRequestData> {
      * @throws HTTP400 if the serial number already exist in the DB
      *
      */
-    async save(): Promise<void> {
+    async save(): Promise<{ id: string } | undefined> {
         try {
             // Save the new Gaterway data in the DB
-            await prisma.gaterway.create({
+            return await prisma.gaterway.create({
                 data: this._gaterway,
+                select: {
+                    id: true,
+                },
             });
         } catch (e) {
             console.log(e);

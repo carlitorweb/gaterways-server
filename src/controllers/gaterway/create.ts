@@ -24,8 +24,9 @@ const createGaterway = (req: NewGaterwayData, res: Response, next: NextFunction)
 
         gaterway
             .save()
-            .then(() => {
+            .then(gaterId => {
                 res.status(201).json({
+                    gaterwayCreatedId: gaterId?.id ?? false,
                     message: `Gaterway ${req.body.name} stored successfully in the DB`,
                 });
             })
