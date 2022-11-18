@@ -16,6 +16,8 @@ const createDevice = (req: NewDeviceData, res: Response, next: NextFunction): vo
         .save()
         .then(response => {
             res.status(201).json({
+                deviceCreatedId: response.id,
+                deviceCreatedDate: response.createdAt,
                 message: `Device with UID ${response.id} stored successfully`,
             });
         })

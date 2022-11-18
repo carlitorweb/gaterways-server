@@ -30,12 +30,14 @@ export default class GaterwayCreate extends BaseGater<NewGaterwayRequestData> {
     async save(): Promise<{ id: string } | undefined> {
         try {
             // Save the new Gaterway data in the DB
-            return await prisma.gaterway.create({
+            const newGaterway = await prisma.gaterway.create({
                 data: this._gaterway,
                 select: {
                     id: true,
                 },
             });
+
+            return newGaterway;
         } catch (e) {
             console.log(e);
             if (e instanceof Prisma.PrismaClientKnownRequestError) {

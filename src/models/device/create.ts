@@ -27,13 +27,14 @@ export default class DeviceCreate extends BaseDevice<NewDeviceRequestData> {
      * @throws HTTP400 if the serial number already exist in the DB
      *
      */
-    async save(): Promise<{ id: string }> {
+    async save(): Promise<{ id: string; createdAt: Date }> {
         try {
             // Save the new Device data in the DB
             const newDevice = await prisma.device.create({
                 data: this._device,
                 select: {
                     id: true,
+                    createdAt: true,
                 },
             });
 
